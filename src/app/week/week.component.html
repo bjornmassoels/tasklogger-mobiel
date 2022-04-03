@@ -1,0 +1,36 @@
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-item>
+      <div id="topNav">
+        <div class="rowFlex">
+          <img id="arrowLeft" src="../../assets/ArrowLeft.png">
+          <p (click)="goBack()" id="month">{{monthString}}</p>
+        </div>
+        <ion-icon (click)="chooseCreate()" id="plusIcon" name="add-circle"></ion-icon>
+      </div>
+    </ion-item>
+  </ion-header>
+  <div *ngIf="isChoosing" id="choice">
+    <div (click)="goToCreateWorklog()" id="worklog">
+      <p id="worklogText">NEW WORKLOG</p>
+    </div>
+    <div (click)="goToCreateTask()" id="task">
+      <p id="taskText">NEW TASK</p>
+    </div>
+  </div>
+  <div  class="boxWeek">
+    <p class="textWeek">WEEK {{weekHours.weekNumber}}</p>
+  </div>
+  <div *ngIf="allDataReceived">
+    <div (click)="goToDay(date.date)" class="box" *ngFor="let date of weekDates" >
+      <div class="columnFlex"  >
+        <p class="textBox">{{date.dayString}}</p>
+        <p class="hours">Hours {{date.hour.hours | add06}}:{{date.hour.minutes | add06}}:00 </p>
+      </div>
+      <div class="rowFlex">
+        <img class="image" src="../../assets/guardian.svg">
+        <img src="../../assets/ArrowRight.png">
+      </div>
+    </div>
+  </div>
+</ion-content>

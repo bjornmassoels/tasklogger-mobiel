@@ -1,0 +1,58 @@
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-item>
+      <div id="topNav">
+        <p (click)="goBackToPreviousPage()" id="cancel">Cancel</p>
+      </div>
+    </ion-item>
+  </ion-header>
+  <ion-select class="project" interface="popover">
+    <ion-select-option value="Haystack Coca Cola">Haystack Coca Cola</ion-select-option>
+    <ion-select-option value="Enerdo Portal">Enerdo Portal</ion-select-option>
+  </ion-select>
+  <p class="required">*Select a project</p>
+  <p class="title">Project/task</p>
+  <ion-select class="project"  [(ngModel)]="task" interface="popover">
+    <ion-select-option value="overview component maken">overview component maken</ion-select-option>
+    <ion-select-option value="timer component maken">timer component maken</ion-select-option>
+  </ion-select>
+  <p class="required">*Insert a title of the task / choose a task</p>
+  <p class="title">Description</p>
+  <ion-textarea [(ngModel)]="description" id="description"></ion-textarea>
+  <p class="required">*Make a brief description of the task</p>
+  <p class="title">Date</p>
+  <div id="datePicker">
+    <ion-select class="select" value="1"  placeholder="Day" [(ngModel)]="daySelected" interface="popover">
+      <ion-select-option   *ngFor="let day of dayArray" value="{{day}}">{{day}}</ion-select-option>
+    </ion-select>
+    <ion-select  class="select" value="1" placeholder="Mon." [(ngModel)]="monthSelected" interface="popover">
+      <ion-select-option value="1">Jan</ion-select-option>
+      <ion-select-option value="2">Feb</ion-select-option>
+      <ion-select-option value="3">Mar</ion-select-option>
+      <ion-select-option value="4">Apr</ion-select-option>
+      <ion-select-option value="5">May</ion-select-option>
+      <ion-select-option value="6">Jun</ion-select-option>
+      <ion-select-option value="7">Jul</ion-select-option>
+      <ion-select-option value="8">Aug</ion-select-option>
+      <ion-select-option value="9">Sep</ion-select-option>
+      <ion-select-option value="10">Oct</ion-select-option>
+      <ion-select-option value="11">Nov</ion-select-option>
+      <ion-select-option value="12">Dec</ion-select-option>
+    </ion-select>
+    <ion-select  class="select" placeholder="Year"  [(ngModel)]="yearSelected" interface="popover">
+      <ion-select-option *ngFor="let year of yearArray" value="{{year}}">{{year}}</ion-select-option>
+    </ion-select>
+  </div>
+  <div class="startEnd">
+    <p class="start">Start-time</p>
+    <p class="end">End-time</p>
+  </div>
+  <div id="pickers">
+    <ion-datetime (ionChange)="updateStartingHours(startHours.value)" #startHours id="startTimePicker" display-format="HH:mm" picker-format="HH:mm" value="09:00"></ion-datetime>
+    <ion-datetime (ionChange)="updateEndingHours(endHours.value)" #endHours id="endTimePicker" display-format="HH:mm" picker-format="HH:mm" value="17:00"></ion-datetime>
+  </div>
+  <div (click)="saveTask()" id="schedule">
+    <p id="scheduleText">SAVE NEW ENTRY</p>
+    <img src="../../assets/save.svg">
+  </div>
+</ion-content>

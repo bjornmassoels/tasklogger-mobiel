@@ -1,0 +1,7 @@
+{
+  "name": "WORKLOGGER",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

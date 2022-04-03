@@ -1,0 +1,48 @@
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-item>
+      <div id="topNav">
+        <div id="row">
+          <img id="arrowLeft" src="../../assets/ArrowLeft.png">
+          <p (click)="goBack()" class="mediumText">Week {{weekSelected}} - overview</p>
+        </div>
+        <ion-icon (click)="createNewWorklog()" id="plusIcon" name="add-circle"></ion-icon>
+      </div>
+    </ion-item>
+  </ion-header>
+  <div class="boxDay">
+    <p class="textDay regularText">{{dayString}}</p>
+    <div id="rowFlex">
+      <p id="totalHours">{{dayHours.hours | add07}}:{{dayHours.minutes | add07}}:00</p>
+      <img src="../../assets/Work_GladiatorEquip_White.svg">
+    </div>
+  </div>
+  <div id="project">
+    <p class="mediumText">Haystack Coca Cola</p>
+    <img (click)="goToUpdate()" class="dotImage" src="../../assets/Edit%20Hours-black.svg">
+  </div>
+  <div id="task">
+    <p class="mediumText">Task description</p>
+    <p class="taskText regularText">Overview component maken</p>
+  </div>
+  <div id="description">
+    <p class="mediumText">Description</p>
+    <p class="descriptionText regularText">{{taskDescription}}</p>
+  </div>
+  <div id="timesText">
+    <p class="mediumText">Time today</p>
+    <p class="mediumText">Start-time</p>
+    <p class="mediumText">End-time</p>
+  </div>
+  <div id="timesHours">
+    <p class="regularText">{{todayHours.hours | add08}}:{{todayHours.minutes | add08}}:00</p>
+    <p class="regularText">{{startHours.hours | add08}}:{{startHours.minutes | add08}}:00</p>
+    <p class="regularText">{{endHours.hours | add08}}:{{endHours.minutes | add08}}:00</p>
+  </div>
+  <div id="totalTime">
+    <p class="mediumText">Total time spend</p>
+    <p class="regularText totalHours">{{timeSpendHours.hours | add08}}:{{timeSpendHours.minutes | add08}}:00</p>
+  </div>
+  <input id="deleteButton" type="button" (click)="deleteWorklog()" value="delete worklog">
+</ion-content>
